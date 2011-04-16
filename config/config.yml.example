@@ -1,0 +1,18 @@
+defaults: &defaults
+  rincex_server: 'www.rincex.com'
+  rincex_project_id: 'Q54905'
+  rincex_project_name: 'ERTOC'
+  rincex_root_dir_id: '24643'
+  rincex_user:
+  rincex_password:
+  basic_auth_user:
+  basic_auth_password:
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
