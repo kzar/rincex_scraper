@@ -8,7 +8,6 @@ Status
 
 Scraping is working, database is all set up and being populated. Basic interface is displayed and atom feed provided.
 
- * Setup a cronjob for scraping
  * Better interface (Make use of the tree structure?)
 
 Development Setup
