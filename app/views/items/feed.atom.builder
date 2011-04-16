@@ -10,7 +10,6 @@ atom_feed do |feed|
       entry.url(item.url)
       entry.title(item.name)
       entry.content(item.description)
-      entry.updated(item.rincex_date)
       entry.author do |author|
         author.name(item.author.display_name)
         author.email(item.author.email)
