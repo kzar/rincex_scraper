@@ -8,7 +8,7 @@ Status
 
 Scraping is working, database is all set up and being populated. Basic interface is displayed and atom feed provided.
 
- * Better interface (Make use of the tree structure?)
+ * Better interface
 
 Development Setup
 =================
