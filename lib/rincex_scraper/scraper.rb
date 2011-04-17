@@ -74,7 +74,7 @@ def self.update_links(links, details, parent)
   # Update the last scraped date of the parent
   if parent
     parent.last_scraped = Time.now
-    if parent.item_type == :publishing
+    if parent.item_type == 'publishing'
       parent.description = details[:description]
     end
     parent.save
