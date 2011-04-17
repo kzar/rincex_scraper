@@ -113,7 +113,10 @@ def self.update_links(links, details, parent)
     unless item_record
       item_record = Item.create(item)
     else
-      item_record.update_attributes(item)
+      # FIXME - How is this happening?
+      unless item_record.id == parent.id
+        item_record.update_attributes(item)
+      end
     end
 
     # Update the item's author if we have it

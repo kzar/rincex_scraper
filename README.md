@@ -8,6 +8,10 @@ Status
 
 Scraping is working, database is all set up and being populated. Basic interface is displayed and atom feed provided.
 
+Todo
+====
+
+ * Figure out why sometimes item_record.id == parent.id in scraper :(
  * Better interface
 
 Development Setup
