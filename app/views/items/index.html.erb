@@ -2,7 +2,6 @@
 
 <a href="/feed-<%= Item.root.first.id %>.atom"><img src="/images/moz-feed-icon.png" alt="Atom" />Atom feed</a>
 
-
 <table border="1" id="items-table">
 <tr>
   <th>Type</th>
@@ -14,7 +13,7 @@
 <tr id="<%= item.id %>"
     <%= "class='child-of-#{item.parent.id}'" if item.parent %>>
   <td><%= item.item_type %></td>
-  <td><a href="<%= item.url %>"><%= item.name %></a></td>
+  <td><a href="<%= item.url(request.remote_ip) %>"><%= item.name %></a></td>
   <td><%= item.author.display_name if item.author %></td>
   <td><%= item.rincex_date %></td>
 </tr>

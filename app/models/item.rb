@@ -27,7 +27,15 @@ class Item < ActiveRecord::Base
     '/FileShare/index.cfm?' + query.to_query
   end
 
-  def url
-    'https://' + APP_CONFIG['rincex_server'] + path
+  def server(ip)
+    if ip and APP_CONFIG['internal_ips'].include? ip
+      APP_CONFIG['rincex_server_internal']
+    else
+      APP_CONFIG['rincex_server']
+    end
+  end
+
+  def url(ip=nil)
+    'https://' + server(ip) + path
   end
 end
