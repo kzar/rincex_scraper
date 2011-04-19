@@ -1,6 +1,7 @@
 <h1><%= "#{APP_CONFIG['rincex_project_name']} (#{APP_CONFIG['rincex_project_id']})" %></h1>
 
-<a href="/feed-<%= Item.root.first.id %>.atom"><img src="/images/moz-feed-icon.png" alt="Atom" />Atom feed</a>
+<a href="/feed-<%= Item.root.first.id %><%= '-internal' if APP_CONFIG['internal_ips'].include? request.remote_ip %>.atom">
+  <img src="/images/moz-feed-icon.png" alt="Atom" />Atom feed</a>
 
 <table id="items-table">
 <tr>

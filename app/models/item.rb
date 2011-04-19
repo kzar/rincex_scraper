@@ -27,15 +27,15 @@ class Item < ActiveRecord::Base
     '/FileShare/index.cfm?' + query.to_query
   end
 
-  def server(ip)
-    if ip and APP_CONFIG['internal_ips'].include? ip
+  def server(ip, internal)
+    if internal or (ip and APP_CONFIG['internal_ips'].include? ip)
       APP_CONFIG['rincex_server_internal']
     else
       APP_CONFIG['rincex_server']
     end
   end
 
-  def url(ip=nil)
-    'https://' + server(ip) + path
+  def url(ip=nil, internal=false)
+    'https://' + server(ip, internal) + path
   end
 end
