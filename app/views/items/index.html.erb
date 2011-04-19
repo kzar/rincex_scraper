@@ -1,32 +1,37 @@
-<h1><%= "#{APP_CONFIG['rincex_project_name']} (#{APP_CONFIG['rincex_project_id']})" %></h1>
+<div class="header">
+  <h1><%= "#{APP_CONFIG['rincex_project_name']} (#{APP_CONFIG['rincex_project_id']})" %></h1>
+  <span class="atom">
+    <a href="/feed-<%= Item.root.first.id %><%= '-internal' if APP_CONFIG['internal_ips'].include? request.remote_ip %>.atom">
+      <img src="/images/moz-feed-icon.png" alt="Atom" />Atom feed</a>
+  </span>
+</div>
 
-<a href="/feed-<%= Item.root.first.id %><%= '-internal' if APP_CONFIG['internal_ips'].include? request.remote_ip %>.atom">
-  <img src="/images/moz-feed-icon.png" alt="Atom" />Atom feed</a>
+<div class="content">
+  <table id="items-table">
+    <tr>
+      <th>&nbsp;</th>
+      <th>Author</th>
+      <th>Date</th>
+    </tr>
+    <% @items.each do |item| %>
+    <tr id="<%= item.id %>"
+        <%= "class='child-of-#{item.parent.id}'" if item.parent %>>
+      <td>
+        <img src="/images/<%= item.item_type %>.png"
+             alt="<%= item.item_type %> icon" />
+        <a href="<%= item.url(request.remote_ip) %>"><%= item.name %></a>
+      </td>
+      <td><%= item.author.display_name if item.author %></td>
+      <td><%= item.rincex_date %></td>
+    </tr>
+    <% end %>
+  </table>
 
-<table id="items-table">
-<tr>
-  <th>&nbsp;</th>
-  <th>Author</th>
-  <th>Date</th>
-</tr>
-<% @items.each do |item| %>
-<tr id="<%= item.id %>"
-    <%= "class='child-of-#{item.parent.id}'" if item.parent %>>
-  <td>
-    <img src="/images/<%= item.item_type %>.png"
-         alt="<%= item.item_type %> icon" />
-    <a href="<%= item.url(request.remote_ip) %>"><%= item.name %></a>
-  </td>
-  <td><%= item.author.display_name if item.author %></td>
-  <td><%= item.rincex_date %></td>
-</tr>
-<% end %>
-</table>
-
-<script type="text/javascript">
-  $(document).ready(function()  {
-    $("#items-table").treeTable({
-      initialState: "expanded"
+  <script type="text/javascript">
+    $(document).ready(function()  {
+      $("#items-table").treeTable({
+        initialState: "expanded"
+      });
     });
-  });
-</script>
+  </script>
+</div>
