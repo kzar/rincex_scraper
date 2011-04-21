@@ -1,7 +1,7 @@
 <div class="header">
   <h1><%= "#{APP_CONFIG['rincex_project_name']} (#{APP_CONFIG['rincex_project_id']})" %></h1>
   <span class="atom">
-    <a href="/feed-<%= Item.root.first.id %><%= '-internal' if APP_CONFIG['internal_ips'].include? request.remote_ip %>.atom">
+    <a href="/feed-<%= Item.root.first.id %>.atom">
       <img src="/images/moz-feed-icon.png" alt="Atom" />Atom feed</a>
   </span>
 </div>
@@ -19,7 +19,7 @@
       <td>
         <img src="/images/<%= item.item_type %>.png"
              alt="<%= item.item_type %> icon" />
-        <a href="<%= item.url(request.remote_ip) %>"><%= item.name %></a>
+        <a href="<%= item.url %>"><%= item.name %></a>
       </td>
       <td><%= item.author.display_name if item.author %></td>
       <td><%= item.rincex_date %></td>

@@ -6,8 +6,8 @@ atom_feed do |feed|
   @items.each do |item|
     next if item.updated_at.blank?
 
-    feed.entry(item, :url => item.url(nil, params[:internal]), :published => item.rincex_date, :updated => item.rincex_date) do |entry|
-      entry.url(item.url(nil, params[:internal]))
+    feed.entry(item, :url => item.url, :published => item.rincex_date, :updated => item.rincex_date) do |entry|
+      entry.url(item.url)
       entry.title(item.name)
       entry.content(item.description)
       entry.author do |author|

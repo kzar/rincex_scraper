@@ -1,7 +1,5 @@
 defaults: &defaults
   rincex_server: 'www.rincex.com'
-  rincex_server_internal: 'rincex'
-  internal_ips: ['217.36.113.197']
   rincex_project_id: 'Q54905'
   rincex_project_name: 'ERTOC'
   rincex_root_dir_id: '24643'
